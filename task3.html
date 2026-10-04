@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Farm Information</title>
+    <link rel="stylesheet" href="css1.css">
+</head>
+
+<body>
+
+<div class="page">
+
+    <header class="header">
+        <h1>Smart Irrigation Advisory</h1>
+        <p>Smart Agriculture Management Portal</p>
+    </header>
+
+    <nav class="nav">
+        <a href="task1.html">Smart Irrigation</a>
+        <a href="task2.html">Irrigation Recommendation</a>
+        <a href="task3.html">Farm Information</a>
+        <a href="task4.html">Sensor Readings</a>
+        <a href="task5.html">Farmer Validation</a>
+        <a href="task6.html">Registration</a>
+    </nav>
+
+    <main>
+
+        <section class="hero-section">
+
+            <div class="hero-content">
+                <p>
+                    Keep your farm information
+                    organized and easy to manage.
+                </p>
+            </div>
+
+            <div class="check-box">
+
+                <h2>View Farm Details</h2>
+
+                <p>
+                    Use a JavaScript object to store
+                    and display important information
+                    about the farm.
+                </p>
+
+                <button onclick="displayFarm()">
+                    Show Farm Information
+                </button>
+
+            </div>
+
+        </section>
+
+        <div id="result" class="result-box"></div>
+
+    </main>
+
+    <footer class="footer">
+        Smart Irrigation Advisory Web Portal
+    </footer>
+
+</div>
+
+<script>
+
+let farm = {
+
+    farmerName: "Manish Kadam",
+    plotId: "AGR-1415",
+    cropStage: "Vegetative",
+    soilMoisture: 42,
+    area: 5,
+    pumpStatus: "ON",
+
+    displayFarm: function() {
+
+        return `
+            <h2>Farm Information</h2>
+
+            <div class="result-item">
+                <b>Farmer Name</b>
+                <span>${this.farmerName}</span>
+            </div>
+
+            <div class="result-item">
+                <b>Plot ID</b>
+                <span>${this.plotId}</span>
+            </div>
+
+            <div class="result-item">
+                <b>Crop Stage</b>
+                <span>${this.cropStage}</span>
+            </div>
+
+            <div class="result-item">
+                <b>Soil Moisture</b>
+                <span>${this.soilMoisture}%</span>
+            </div>
+
+            <div class="result-item">
+                <b>Farm Area</b>
+                <span>${this.area} acres</span>
+            </div>
+
+            <div class="result-status">
+                Pump Status: ${this.pumpStatus}
+            </div>
+        `;
+    }
+};
+
+function displayFarm() {
+
+    document.getElementById("result").innerHTML =
+        farm.displayFarm();
+
+    document.getElementById("result").style.display =
+        "block";
+
+    document.querySelector(".hero-section").style.display =
+        "none";
+}
+
+</script>
+
+</body>
+</html>

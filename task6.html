@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Farmer Irrigation Registration</title>
+    <link rel="stylesheet" href="css1.css">
+</head>
+<body>
+
+<div class="header">
+    <h1>Farmer Irrigation Registration</h1>
+    <p>Smart Agriculture Management Portal</p>
+</div>
+
+<div class="nav">
+    <a href="task1.html">Smart Irrigation</a>
+    <a href="task2.html">Irrigation Recommendation</a>
+    <a href="task3.html">Farm Information</a>
+    <a href="task4.html">Sensor Readings</a>
+    <a href="task5.html">Farmer Validation</a>
+    <a href="task6.html">Registration</a>
+</div>
+
+<div class="form-container">
+    <h2>Farmer Registration</h2>
+    <p>Enter the farmer and irrigation details below.</p>
+
+    <div id="errorSummary" class="error-summary"></div>
+
+    <form id="registrationForm">
+        <fieldset>
+            <legend>Farmer Information</legend>
+
+            <div class="input-group">
+                <label for="farmerName">Farmer Name</label>
+                <div class="input-box">
+                    <input type="text" id="farmerName" placeholder="e.g. Manish Kadam">
+                </div>
+                <div id="nameError" class="error"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="mobile">Mobile Number</label>
+                <div class="input-box">
+                    <input type="password" id="mobile" maxlength="10" placeholder="e.g. 9876543210">
+                    <button type="button" class="eye" onclick="showMobile()">
+                        <span class="eye-shape"></span>
+                    </button>
+                </div>
+                <div id="mobileError" class="error"></div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Farm Information</legend>
+
+            <div class="input-group">
+                <label for="plotId">Plot ID</label>
+                <div class="input-box">
+                    <input type="text" id="plotId" placeholder="e.g. AGR-1234">
+                </div>
+                <div id="plotError" class="error"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="soilMoisture">Soil Moisture (%)</label>
+                <div class="input-box">
+                    <input type="number" id="soilMoisture" min="0" max="100" placeholder="e.g. 45">
+                </div>
+                <div id="moistureError" class="error"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="cropStage">Crop Stage</label>
+                <div class="input-box">
+                    <select id="cropStage">
+                        <option value="">Select crop stage</option>
+                        <option>Germination</option>
+                        <option>Vegetative</option>
+                        <option>Flowering</option>
+                        <option>Grand Growth</option>
+                        <option>Maturity</option>
+                    </select>
+                </div>
+                <div id="stageError" class="error"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="irrigationDate">Irrigation Date</label>
+                <div class="input-box">
+                    <input type="date" id="irrigationDate">
+                </div>
+                <div id="dateError" class="error"></div>
+            </div>
+        </fieldset>
+
+        <div class="form-buttons">
+            <button type="reset" class="clear-btn">Clear Form</button>
+            <button type="submit" class="submit-btn">Submit Request</button>
+        </div>
+    </form>
+</div>
+
+<div id="successModal" class="success-modal">
+    <div class="success-box">
+        <div class="success-circle">✓</div>
+        <div class="success-label">SUCCESS</div>
+        <h2>Registration Successful!</h2>
+        <p>
+            Your farmer irrigation request has been
+            registered successfully.
+        </p>
+        <button type="button" onclick="closeSuccessModal()">Continue</button>
+    </div>
+</div>
+
+<script>
+let form = document.getElementById("registrationForm");
+let submitted = false;
+
+function validateName() {
+    let value = document.getElementById("farmerName").value.trim();
+    let pattern = /^[A-Za-z ]+$/;
+    let input = document.getElementById("farmerName");
+    let error = document.getElementById("nameError");
+
+    if (value == "") {
+        input.classList.add("invalid");
+        input.classList.remove("valid");
+        error.innerHTML = "Farmer name is required. Enter alphabets and spaces only.";
+        return false;
+    }
+
+    if (!pattern.test(value)) {
+        input.classList.add("invalid");
+        input.classList.remove("valid");
+        error.innerHTML = "Invalid name. Expected only alphabets and spaces, for example: Manish Kadam.";
+        return false;
+    }
+
+    input.classList.add("valid");
+    input.classList.remove("invalid");
+    error.innerHTML = "";
+    return true;
+}
+
+function validateMobile() {
+    let value = document.getElementById("mobile").value;
+    let pattern = /^[0-9]{10}$/;
+    let input = document.getElementById("mobile");
+    let error = document.getElementById("mobileError");
+
+    if (value == "") {
+        input.classList.add("invalid");
+        input.classList.remove("valid");
+        error.innerHTML = "Mobile number is required. Enter exactly 10 digits.";
+        return false;
+    }
+
+    if (!pattern.test(value)) {
+        input.classList.add("invalid");
+        input.classList.remove("valid");
+        error.innerHTML = "Invalid mobile number. Expected exactly 10 digits, for example: 9876543210.";
+        return false;
+    }
+
+    input.classList.add("valid");
+    input.classList.remove("invalid");
+    error.innerHTML = "";
+    return true;
+}
+
+function validatePlot() {
+    let value = document.getElementById("plotId").value.trim();
+    let pattern = /^AGR-[0-9]{4}$/;
+    let input = document.getElementById("plotId");
+    let error = document.getElementById("plotError");
+
+    if (value == "") {
+        input.classList.add("invalid");
+        input.classList.remove("valid");
+        error.innerHTML = "Plot ID is required. Expected format: AGR-1234.";
+        return false;
+    }
+
+    if (!pattern.test(value)) {
+        input.classList.add("invalid");
+        input.classList.remove("valid");
+        error.innerHTML = "Invalid Plot ID. Expected format is AGR-1234: AGR-, followed by exactly 4 digits.";
+        return false;
+    }
+
+    input.classList.add("valid");
+    input.classList.remove("invalid");
+    error.innerHTML = "";
+    return true;
+}
+
+function validateMoisture() {
+    let value = document.getElementById("soilMoisture").value;
+    let input = document.getElementById("soilMoisture");
+    let error = document.getElementById("moistureError");
+
+    if (value == "") {
+        input.classList.add("invalid");
+        input.classList.remove("valid");
+        error.innerHTML = "Soil moisture is required. Enter a value from 0 to 100.";
+        return false;
+    }
+
+    if (value < 0 || value > 100) {
+        input.classList.add("invalid");
+        input.classList.remove("valid");
+        error.innerHTML = "Invalid soil moisture. Expected a value between 0% and 100%.";
+        return false;
+    }
+
+    input.classList.add("valid");
+    input.classList.remove("invalid");
+    error.innerHTML = "";
+    return true;
+}
+
+function validateCropStage() {
+    let value = document.getElementById("cropStage").value;
+    let input = document.getElementById("cropStage");
+    let error = document.getElementById("stageError");
+
+    if (value == "") {
+        input.classList.add("invalid");
+        input.classList.remove("valid");
+        error.innerHTML = "Crop stage is required. Please select one option.";
+        return false;
+    }
+
+    input.classList.add("valid");
+    input.classList.remove("invalid");
+    error.innerHTML = "";
+    return true;
+}
+
+function validateDate() {
+    let value = document.getElementById("irrigationDate").value;
+    let input = document.getElementById("irrigationDate");
+    let error = document.getElementById("dateError");
+
+    if (value == "") {
+        input.classList.add("invalid");
+        input.classList.remove("valid");
+        error.innerHTML = "Irrigation date is required. Please select a date.";
+        return false;
+    }
+
+    input.classList.add("valid");
+    input.classList.remove("invalid");
+    error.innerHTML = "";
+    return true;
+}
+
+function showMobile() {
+    let mobile = document.getElementById("mobile");
+
+    if (mobile.type == "password") {
+        mobile.type = "text";
+    } else {
+        mobile.type = "password";
+    }
+}
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    submitted = true;
+
+    let nameValid = validateName();
+    let mobileValid = validateMobile();
+    let plotValid = validatePlot();
+    let moistureValid = validateMoisture();
+    let stageValid = validateCropStage();
+    let dateValid = validateDate();
+
+    let errorSummary = document.getElementById("errorSummary");
+
+    if (nameValid && mobileValid && plotValid && moistureValid &&
+        stageValid && dateValid) {
+
+        errorSummary.style.display = "none";
+        document.getElementById("successModal").classList.add("show");
+
+    } else {
+        errorSummary.style.display = "block";
+        errorSummary.innerHTML =
+            "Registration could not be submitted. " +
+            "Please correct the highlighted fields using " +
+            "the expected formats shown below each field.";
+    }
+});
+
+form.addEventListener("reset", function() {
+    setTimeout(function() {
+        submitted = false;
+
+        document.querySelectorAll("input, select")
+            .forEach(function(input) {
+                input.classList.remove("valid");
+                input.classList.remove("invalid");
+            });
+
+        document.querySelectorAll(".error")
+            .forEach(function(error) {
+                error.innerHTML = "";
+            });
+
+        document.getElementById("errorSummary").style.display = "none";
+    }, 0);
+});
+
+function closeSuccessModal() {
+    document.getElementById("successModal").classList.remove("show");
+    form.reset();
+}
+</script>
+
+<div class="footer">
+    Smart Agriculture Management Portal
+</div>
+
+</body>
+</html>
+

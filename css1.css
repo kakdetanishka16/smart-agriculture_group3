@@ -1,0 +1,584 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background: #F4F7F2;
+    color: #26382D;
+}
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Header */
+
+.header {
+    width: 100%;
+    background: #4B6F44;
+    color: white;
+    text-align: center;
+    padding: 25px 20px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.header p {
+    margin: 8px 0 0;
+    font-size: 15px;
+}
+
+/* Navigation */
+
+.nav {
+    width: 100%;
+    background: #26382D;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 12px;
+    flex-wrap: wrap;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.nav a:hover {
+    background: #4B6F44;
+}
+
+/* Main */
+
+main {
+    width: 100%;
+    padding-bottom: 75px;
+}
+
+/* Normal Task Container */
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 50px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.center {
+    text-align: center;
+}
+
+.container h2 {
+    margin-top: 0;
+    margin-bottom: 35px;
+    color: #4B6F44;
+    font-size: 34px;
+}
+
+/* Normal Buttons */
+
+.container button {
+    padding: 16px 30px;
+    border: none;
+    border-radius: 8px;
+    background: #4B6F44;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.container button:hover {
+    background: #5D8754;
+}
+
+/* Task 1-5 Hero Section */
+
+.hero-section {
+    width: 92%;
+    max-width: 1350px;
+    min-height: 700px;
+    margin: 0 auto;
+    padding: 100px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+}
+
+.hero-content {
+    flex: 1;
+    text-align: left;
+}
+
+.hero-content p {
+    margin: 0;
+    max-width: 760px;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 64px;
+    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: -1px;
+    color: #4B6F44;
+}
+
+/* Task Card */
+
+.check-box {
+    width: 560px;
+    min-height: 440px;
+    flex-shrink: 0;
+    padding: 60px;
+    background: #26382D;
+    border-radius: 20px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+.check-box h2 {
+    margin: 0 0 30px;
+    color: white;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+.check-box p {
+    margin: 0 0 45px;
+    color: #DCE6DE;
+    font-family: Arial, sans-serif;
+    font-size: 21px;
+    line-height: 1.6;
+}
+
+.check-box button {
+    width: 100%;
+    padding: 18px 20px;
+    border: none;
+    border-radius: 9px;
+    background: #6F9B63;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.check-box button:hover {
+    background: #5D8754;
+}
+
+/* Result Box */
+
+.result-box {
+    width: 90%;
+    max-width: 900px;
+    margin: 100px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.result-box h2 {
+    color: #4B6F44;
+    text-align: center;
+    margin-top: 0;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 5px;
+    border-bottom: 1px solid #DDE5DD;
+}
+
+.result-item b {
+    color: #26382D;
+}
+
+.result-item span {
+    color: #4B6F44;
+}
+
+.result-status {
+    margin-top: 20px;
+    padding: 14px;
+    background: #E4F0E1;
+    color: #35602F;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.invalid-result {
+    background: #F5DCDC;
+    color: #9B3333;
+}
+
+/* Task 6 Form */
+
+.form-container {
+    width: 90%;
+    max-width: 850px;
+    margin: 60px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.form-container h2 {
+    text-align: center;
+    color: #4B6F44;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+/* Error Summary */
+
+.error-summary {
+    display: none;
+    padding: 15px;
+    margin-bottom: 20px;
+    background: #F5DCDC;
+    color: #9B3333;
+    border-radius: 8px;
+    line-height: 1.5;
+}
+
+/* Fieldset */
+
+fieldset {
+    border: 2px solid #DDE5DD;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+legend {
+    padding: 0 10px;
+    color: #4B6F44;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Input Group */
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #26382D;
+    font-weight: bold;
+}
+
+/* Input Box */
+
+.input-box {
+    position: relative;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #C9D5C8;
+    border-radius: 7px;
+    background: white;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.input-box:focus-within {
+    border-color: #4B6F44;
+}
+
+/* Inputs */
+
+.input-box input,
+.input-box select {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+/* Invalid Field */
+
+.input-box:has(input.invalid),
+.input-box:has(select.invalid) {
+    border: 2px solid #C94A4A;
+    background: #FFF7F7;
+}
+
+/* Valid Field */
+
+.input-box:has(input.valid),
+.input-box:has(select.valid) {
+    border: 2px solid #6F9B63;
+    background: #F7FBF6;
+}
+
+/* Error Message */
+
+.error {
+    color: #C03939;
+    font-size: 14px;
+    margin-top: 7px;
+    padding-left: 2px;
+    line-height: 1.4;
+}
+
+/* Eye Button */
+
+.eye {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    padding: 5px 8px;
+    cursor: pointer;
+    color: #4B6F44;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eye:hover {
+    color: #5D8754;
+}
+
+.eye-shape {
+    cursor: pointer;
+}
+
+/* Form Buttons */
+
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.clear-btn,
+.submit-btn {
+    padding: 13px 25px;
+    border: none;
+    border-radius: 7px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.clear-btn {
+    background: #D9E0D8;
+    color: #26382D;
+}
+
+.submit-btn {
+    background: #4B6F44;
+    color: white;
+}
+
+.submit-btn:hover {
+    background: #5D8754;
+}
+
+/* Success Modal */
+
+.success-modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.success-modal.show {
+    display: flex;
+}
+
+.success-box {
+    width: 90%;
+    max-width: 450px;
+    padding: 40px;
+    background: white;
+    border-radius: 18px;
+    text-align: center;
+}
+
+.success-circle {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #E4F0E1;
+    color: #35602F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+}
+
+.success-label {
+    color: #4B6F44;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.success-box button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 7px;
+    background: #4B6F44;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.success-box button:hover {
+    background: #5D8754;
+}
+
+/* Bottom Ribbon */
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 55px;
+    background: #26382D;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    z-index: 1000;
+}
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+
+    .hero-section {
+        flex-direction: column;
+        gap: 60px;
+        padding: 80px 0;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-content p {
+        font-size: 50px;
+    }
+
+    .check-box {
+        width: 560px;
+        max-width: 100%;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .header h1 {
+        font-size: 26px;
+    }
+
+    .nav {
+        padding: 10px;
+    }
+
+    .nav a {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .hero-section {
+        width: 88%;
+        padding: 60px 0;
+    }
+
+    .hero-content p {
+        font-size: 38px;
+        letter-spacing: 0;
+    }
+
+    .check-box {
+        min-height: 360px;
+        padding: 40px 30px;
+    }
+
+    .check-box h2 {
+        font-size: 30px;
+    }
+
+    .check-box p {
+        font-size: 18px;
+    }
+
+    .check-box button {
+        font-size: 17px;
+    }
+
+    .container {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    .container h2 {
+        font-size: 27px;
+    }
+
+    .form-container {
+        width: 92%;
+        padding: 25px 20px;
+    }
+
+    .footer {
+        height: 50px;
+        font-size: 12px;
+    }
+}

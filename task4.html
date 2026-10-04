@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sensor Readings</title>
+    <link rel="stylesheet" href="css1.css">
+</head>
+
+<body>
+
+<div class="page">
+
+    <header class="header">
+        <h1>Smart Irrigation Advisory</h1>
+        <p>Smart Agriculture Management Portal</p>
+    </header>
+
+    <nav class="nav">
+        <a href="task1.html">Smart Irrigation</a>
+        <a href="task2.html">Irrigation Recommendation</a>
+        <a href="task3.html">Farm Information</a>
+        <a href="task4.html">Sensor Readings</a>
+        <a href="task5.html">Farmer Validation</a>
+        <a href="task6.html">Registration</a>
+    </nav>
+
+    <main>
+
+        <section class="hero-section">
+
+            <div class="hero-content">
+                <p>
+                    Turn sensor readings into
+                    useful insights for your field.
+                </p>
+            </div>
+
+            <div class="check-box">
+
+                <h2>Analyze Sensor Data</h2>
+
+                <p>
+                    Analyze soil moisture readings to find
+                    minimum, maximum and average moisture
+                    levels in the field.
+                </p>
+
+                <button onclick="analyzeReadings()">
+                    Analyze Readings
+                </button>
+
+            </div>
+
+        </section>
+
+        <div id="result" class="result-box"></div>
+
+    </main>
+
+    <footer class="footer">
+        Smart Irrigation Advisory Web Portal
+    </footer>
+
+</div>
+
+<script>
+
+function analyzeReadings() {
+
+    let readings = [25, 42, 35, 58, 28, 45];
+
+    let minimum = Math.min(...readings);
+    let maximum = Math.max(...readings);
+    let total = 0;
+    let criticalCount = 0;
+    for (let i = 0; i < readings.length; i++) {
+
+        total = total + readings[i];
+
+        if (readings[i] < 30) {
+            criticalCount++;
+        }
+    }
+
+    let average = total / readings.length;
+
+    document.getElementById("result").innerHTML = `
+        <h2>Sensor Reading Analysis</h2>
+
+        <div class="result-item">
+            <b>All Readings</b>
+            <span>${readings.join(", ")}%</span>
+        </div>
+
+        <div class="result-item">
+            <b>Minimum Reading</b>
+            <span>${minimum}%</span>
+        </div>
+
+        <div class="result-item">
+            <b>Maximum Reading</b>
+            <span>${maximum}%</span>
+        </div>
+
+        <div class="result-item">
+            <b>Average Reading</b>
+            <span>${average.toFixed(2)}%</span>
+        </div>
+
+        <div class="result-status">
+            Readings Below Critical Level: ${criticalCount}
+        </div>
+    `;
+    document.getElementById("result").style.display =
+        "block";
+
+    document.querySelector(".hero-section").style.display =
+        "none";
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Smart Irrigation</title>
+    <link rel="stylesheet" href="css1.css">
+
+    <script>
+        function checkIrrigation() {
+            let farmerName = prompt("Enter Farmer Name:");
+            let plotId = prompt("Enter Plot ID:");
+            let currentMoisture =
+                Number(prompt("Enter Current Soil Moisture (%):"));
+            let requiredMoisture =
+                Number(prompt("Enter Required Soil Moisture (%):"));
+
+            let moistureDeficit =
+                requiredMoisture - currentMoisture;
+            let status;
+
+            if (moistureDeficit > 0) {
+                status = "Irrigation Required";
+            }
+            else {
+                status = "Irrigation Not Required";
+            }
+
+            alert(status);
+
+            document.getElementById("intro").style.display = "none";
+
+            document.getElementById("result").innerHTML =
+                "<h2>Smart Irrigation Advisory</h2>" +
+                "<div class='result-item'>" +
+                "<b>Farmer Name</b><span>" +
+                farmerName + "</span></div>" +
+                "<div class='result-item'>" +
+                "<b>Plot ID</b><span>" +
+                plotId + "</span></div>" +
+                "<div class='result-item'>" +
+                "<b>Current Soil Moisture</b><span>" +
+                currentMoisture + "%</span></div>" +
+                "<div class='result-item'>" +
+                "<b>Required Soil Moisture</b><span>" +
+                requiredMoisture + "%</span></div>" +
+                "<div class='result-item'>" +
+                "<b>Moisture Deficit</b><span>" +
+                moistureDeficit + "%</span></div>" +
+                "<div class='result-status'>✓ " +
+                status + "</div>";
+
+            document.getElementById("result").style.display = "block";
+        }
+    </script>
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="header">
+        <h1>Smart Irrigation Advisory</h1>
+        <p>Smart Agriculture Management Portal</p>
+    </div>
+
+    <div class="nav">
+        <a href="task1.html">Smart Irrigation</a>
+        <a href="task2.html">Irrigation Recommendation</a>
+        <a href="task3.html">Farm Information</a>
+        <a href="task4.html">Sensor Readings</a>
+        <a href="task5.html">Farmer Validation</a>
+        <a href="task6.html">Registration</a>
+    </div>
+
+    <main>
+
+        <div id="intro" class="hero-section">
+
+            <div class="hero-content">
+                <p>
+                    Smart irrigation saves water<br>
+                    and supports healthier growth.
+                </p>
+            </div>
+
+            <div class="check-box">
+                <h2>Check Your Field</h2>
+
+                <p>
+                    Find out if your field needs irrigation.
+                </p>
+
+                <button onclick="checkIrrigation()">
+                    Check Irrigation
+                </button>
+            </div>
+
+        </div>
+
+        <div id="result" class="result-box"></div>
+
+    </main>
+
+    <div class="footer">
+        Smart Agriculture Management Portal
+    </div>
+</div>
+</body>
+</html>
